@@ -16,6 +16,7 @@ public class DeptEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         // 获取部门编号
         String deptno = request.getParameter("deptno");
         Connection conn = null;
