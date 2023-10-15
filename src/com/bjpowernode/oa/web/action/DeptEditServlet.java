@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +17,21 @@ public class DeptEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String contextPath = request.getContextPath();
+
+        response.setContentType("text/html;charset=utf-8");
+        PrintWriter out = response.getWriter();
+
+        out.print("        <!DOCTYPE html>");
+        out.print("<html lang='en'>");
+        out.print("<head>");
+        out.print("    <meta charset='UTF-8'>");
+        out.print("    <title>修改部门</title>");
+        out.print("</head>");
+        out.print("<body>");
+        out.print("    <h1 align='center'>修改部门</h1>");
+        out.print("    <hr width='80%'>");
+        out.print("    <form action='"+contextPath+"/dept/modify' method='post'>");
 
         // 获取部门编号
         String deptno = request.getParameter("deptno");
@@ -31,6 +47,10 @@ public class DeptEditServlet extends HttpServlet {
             if (rs.next()) {
                 String dname = rs.getString("dname");
                 String loc = rs.getString("loc");
+                // 输出动态信息
+                out.print("部门编号<input type='text' name='deptno' value='"+deptno+"' readonly/> <br>");
+                out.print("部门名称<input type='text' name='dname' value='"+dname+"'/> <br>");
+                out.print("部门位置<input type='text' name='loc' value='"+loc+"'/> <br>");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -38,5 +58,9 @@ public class DeptEditServlet extends HttpServlet {
             DBUtil.close(conn,ps,rs);
         }
 
+        out.print("      <input type='submit' value='修改'>");
+        out.print("    </form>");
+        out.print("</body>");
+        out.print("</html>");
     }
 }

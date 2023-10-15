@@ -100,7 +100,7 @@ public class DeptListServlet extends HttpServlet {
         /* 下面是固定的 */
         out.print("    </table>");
         out.print("    <hr width='80%'>");
-        out.print("    <a href='"+contextPath+"/add.html'>新增部门</a>");
+        out.print("    <a href='"+contextPath+"/add.jsp'>新增部门</a>");
         out.print("</body>");
         out.print("</html>");
 

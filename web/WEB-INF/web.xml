@@ -52,4 +52,14 @@
         <servlet-name>edit</servlet-name>
         <url-pattern>/dept/edit</url-pattern>
     </servlet-mapping>
+
+    <!-- 修改部门 -->
+    <servlet>
+        <servlet-name>modify</servlet-name>
+        <servlet-class>com.bjpowernode.oa.web.action.DeptModifyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>modify</servlet-name>
+        <url-pattern>/dept/modify</url-pattern>
+    </servlet-mapping>
 </web-app>
